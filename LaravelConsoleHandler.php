@@ -6,9 +6,8 @@ use Monolog\Handler\AbstractProcessingHandler;
 
 class LaravelConsoleHandler extends AbstractProcessingHandler
 {
-    protected function write(array $record): void
+    protected function write(array $log): void
     {
-        $log = $record['formatted'];
-        dd($log);
+        CacheManager::add($log);
     }
 }
