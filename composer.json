@@ -9,6 +9,11 @@
         }
     ],
     "require": {},
+    "autoload": {
+        "psr-4": {
+            "Redberry\\LaravelConsole\\": "/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
