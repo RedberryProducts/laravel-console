@@ -1,0 +1,19 @@
+{
+    "name": "redberry/laravel-console",
+    "description": "Laravel Console is a convinient way to watch application logs",
+    "type": "library",
+    "authors": [
+        {
+            "name": "giunashvili",
+            "email": "giuna@redberry.ge"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Redberry\\LaravelConsole\\ServiceProvider"
+            ]
+        }
+    }
+}
