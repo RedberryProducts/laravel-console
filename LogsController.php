@@ -9,6 +9,14 @@ class LogsController
      */
     public function getCurrentLogs()
     {
-        return ['hait'];
+        return CacheManager::logs();
+    }
+
+    /**
+     * Remove old logs.
+     */
+    public function removeOldLogs(): void
+    {
+        CacheManager::clear();
     }
 }
