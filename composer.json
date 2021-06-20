@@ -20,5 +20,6 @@
                 "Redberry\\LaravelConsole\\ServiceProvider"
             ]
         }
-    }
+    },
+    "license": "MIT"
 }
