@@ -1,6 +1,6 @@
 <?php
 
-namespace Redberry\LaravelConsole;
+namespace Redberry\LaravelConsole\App;
 
 use Illuminate\Support\Facades\Cache;
 
@@ -19,7 +19,7 @@ class CacheManager
     /**
      * Add log record into the cache.
      */
-    public static function add(array $record): void
+    public static function add($record): void
     {
         $logRecords = Cache::get(self::LOG_KEY, []);
         $logRecords[] = $record;

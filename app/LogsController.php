@@ -1,6 +1,6 @@
 <?php
 
-namespace Redberry\LaravelConsole;
+namespace Redberry\LaravelConsole\App;
 
 class LogsController
 {

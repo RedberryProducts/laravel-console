@@ -3,6 +3,8 @@
 namespace Redberry\LaravelConsole;
 
 use Illuminate\Support\ServiceProvider as SupportServiceProvider;
+use Redberry\LaravelConsole\Support\LaravelConsoleFormatter;
+use Redberry\LaravelConsole\Support\LaravelConsoleHandler;
 
 class ServiceProvider extends SupportServiceProvider
 {
@@ -13,7 +15,7 @@ class ServiceProvider extends SupportServiceProvider
      */
     public function register()
     {
-        $this->loadRoutesFrom(__DIR__ . '/api.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes.php');
     }
 
     /**

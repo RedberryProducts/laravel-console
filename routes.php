@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Redberry\LaravelConsole\LogsController;
+use Redberry\LaravelConsole\App\LogsController;
 
 Route::prefix('laravel-console')->group(function() {
     Route::get('/', [LogsController::class, 'getCurrentLogs']);
