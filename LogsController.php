@@ -15,7 +15,7 @@ class LogsController
     /**
      * Remove old logs.
      */
-    public function removeOldLogs(): void
+    public function forget(): void
     {
         CacheManager::clear();
     }
