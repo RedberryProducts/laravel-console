@@ -12,7 +12,10 @@
     "autoload": {
         "psr-4": {
             "Redberry\\LaravelConsole\\": "/"
-        }
+        },
+        "files": [
+            "./helpers.php"
+        ]
     },
     "extra": {
         "laravel": {

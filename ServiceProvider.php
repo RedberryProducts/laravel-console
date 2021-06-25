@@ -3,7 +3,6 @@
 namespace Redberry\LaravelConsole;
 
 use Illuminate\Support\ServiceProvider as SupportServiceProvider;
-use Redberry\LaravelConsole\Support\LaravelConsoleFormatter;
 use Redberry\LaravelConsole\Support\LaravelConsoleHandler;
 
 class ServiceProvider extends SupportServiceProvider
