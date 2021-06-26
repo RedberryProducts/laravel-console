@@ -2,8 +2,10 @@
 
 namespace Redberry\LaravelConsole;
 
+use Illuminate\Support\Facades\Event;
+use Illuminate\Log\Events\MessageLogged;
+use Redberry\LaravelConsole\App\ConsoleLogListener;
 use Illuminate\Support\ServiceProvider as SupportServiceProvider;
-use Redberry\LaravelConsole\Support\LaravelConsoleHandler;
 
 class ServiceProvider extends SupportServiceProvider
 {
@@ -24,12 +26,9 @@ class ServiceProvider extends SupportServiceProvider
      */
     public function boot()
     {
-        $this
-            ->app
-            ->make('config')
-            ->set('logging.channels.console', [
-                'driver' => 'monolog',
-                'handler' => LaravelConsoleHandler::class,
-            ]);
+        Event::listen(
+            MessageLogged::class,
+            ConsoleLogListener::class,
+        );
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Redberry\LaravelConsole\Support;
 
-class Console
+class console
 {
     public static function __callStatic($name, $arguments)
     {

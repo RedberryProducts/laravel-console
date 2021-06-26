@@ -21,6 +21,7 @@ class CacheManager
      */
     public static function add($record): void
     {
+        dd($record);
         $logRecords = Cache::get(self::LOG_KEY, []);
         $logRecords[] = $record;
         Cache::put(self::LOG_KEY, $logRecords);
