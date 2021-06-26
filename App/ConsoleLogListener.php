@@ -12,6 +12,9 @@ class ConsoleLogListener
 	 */
 	public function handle($event)
 	{
-		CacheManager::add($event);
+		$id = CacheManager::increment();
+		CacheManager::add(
+			(new Log($id, $event->level, $event->message))->toArray(),
+		);
 	}
 }
