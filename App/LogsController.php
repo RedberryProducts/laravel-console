@@ -19,4 +19,12 @@ class LogsController
     {
         CacheManager::clear();
     }
+
+    /**
+     * Tell the extensions that the web site is debuggable.
+     */
+    public function ping()
+    {
+        return true;
+    }
 }

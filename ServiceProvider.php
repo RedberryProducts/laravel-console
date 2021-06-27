@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Log\Events\MessageLogged;
 use Redberry\LaravelConsole\App\ConsoleLogListener;
 use Illuminate\Support\ServiceProvider as SupportServiceProvider;
+use Redberry\LaravelConsole\App\Logger;
 
 class ServiceProvider extends SupportServiceProvider
 {
@@ -17,6 +18,7 @@ class ServiceProvider extends SupportServiceProvider
     public function register()
     {
         $this->loadRoutesFrom(__DIR__ . '/routes.php');
+        $this->app->singleton('laravel-console.logger', fn () => new Logger());
     }
 
     /**
@@ -26,9 +28,11 @@ class ServiceProvider extends SupportServiceProvider
      */
     public function boot()
     {
-        Event::listen(
-            MessageLogged::class,
-            ConsoleLogListener::class,
-        );
+        # Registering listener for laravel internal logger.
+
+        // Event::listen(
+        //     MessageLogged::class,
+        //     ConsoleLogListener::class,
+        // );
     }
 }
