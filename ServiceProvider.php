@@ -3,10 +3,11 @@
 namespace Redberry\LaravelConsole;
 
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Blade;
+use Redberry\LaravelConsole\App\Logger;
 use Illuminate\Log\Events\MessageLogged;
 use Redberry\LaravelConsole\App\ConsoleLogListener;
 use Illuminate\Support\ServiceProvider as SupportServiceProvider;
-use Redberry\LaravelConsole\App\Logger;
 
 class ServiceProvider extends SupportServiceProvider
 {
@@ -34,5 +35,10 @@ class ServiceProvider extends SupportServiceProvider
         //     MessageLogged::class,
         //     ConsoleLogListener::class,
         // );
+
+        Blade::directive('log', function ($item) {
+            eval("\$passedItem = $item;");
+            console()->log($passedItem);
+        }); 
     }
 }

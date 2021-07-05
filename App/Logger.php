@@ -12,7 +12,7 @@ class Logger
 	 */
 	public function emergency($message)
 	{
-			$this->writeLog(__FUNCTION__, $message);
+            $this->writeLog(__FUNCTION__, $message);
 	}
 
 	/**
@@ -23,7 +23,7 @@ class Logger
 	 */
 	public function alert($message)
 	{
-			$this->writeLog(__FUNCTION__, $message);
+            $this->writeLog(__FUNCTION__, $message);
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Logger
 	 */
 	public function critical($message)
 	{
-			$this->writeLog(__FUNCTION__, $message);
+            $this->writeLog(__FUNCTION__, $message);
 	}
 
 	/**
@@ -45,7 +45,7 @@ class Logger
 	 */
 	public function error($message)
 	{
-			$this->writeLog(__FUNCTION__, $message);
+            $this->writeLog(__FUNCTION__, $message);
 	}
 
 	/**
@@ -56,7 +56,7 @@ class Logger
 	 */
 	public function warning($message)
 	{
-			$this->writeLog(__FUNCTION__, $message);
+            $this->writeLog(__FUNCTION__, $message);
 	}
 
 	/**
@@ -67,7 +67,7 @@ class Logger
 	 */
 	public function notice($message)
 	{
-			$this->writeLog(__FUNCTION__, $message);
+            $this->writeLog(__FUNCTION__, $message);
 	}
 
 	/**
@@ -78,7 +78,7 @@ class Logger
 	 */
 	public function info($message)
 	{
-			$this->writeLog(__FUNCTION__, $message);
+            $this->writeLog(__FUNCTION__, $message);
 	}
 
 	/**
@@ -88,8 +88,8 @@ class Logger
 	 * @return void
 	 */
 	public function log($message)
-	{
-			$this->info($message);
+    	{
+        $this->info($message);
 	}
 
 	/**
@@ -101,7 +101,7 @@ class Logger
 	 */
 	public function debug($message)
 	{
-			$this->writeLog(__FUNCTION__, $message);
+            $this->writeLog(__FUNCTION__, $message);
 	}
 
 	/**
@@ -109,6 +109,9 @@ class Logger
 	 */
 	protected function writeLog($level, $message)
 	{
+		$trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS & ~DEBUG_BACKTRACE_PROVIDE_OBJECT);
+		$consoleLogTrace = $trace[2];
+
 		$id = CacheManager::increment();
 		CacheManager::add(
 			(new Log($id, $level, $message))->toArray(),
