@@ -35,10 +35,38 @@ class ServiceProvider extends SupportServiceProvider
         //     MessageLogged::class,
         //     ConsoleLogListener::class,
         // );
-
+        
+        /**
+         * Log data.
+         */
         Blade::directive('log', function ($item) {
             eval("\$passedItem = $item;");
             console()->log($passedItem);
+        }); 
+        
+        /**
+         * Log all the data passed into the view.
+         */ 
+        Blade::directive('explain', function () {
+            return '<?php 
+                $viewData = get_defined_vars()["__data"];
+                if(isset($viewData["__env"])) 
+                {
+                    unset($viewData["__env"]);
+                }
+
+                if(isset($viewData["app"])) 
+                {
+                    unset($viewData["app"]);
+                }
+
+                if(isset($viewData["errors"])) 
+                {
+                    unset($viewData["errors"]);
+                }
+
+                console()->log($viewData);
+            ?>';
         }); 
     }
 }
