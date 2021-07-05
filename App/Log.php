@@ -34,15 +34,21 @@ class Log
 	 */
 	public string $type;
 
+        /**
+         * Trace info.
+         */
+        public Trace $trace;
+
 	/**
 	 * Format laravel console log.
 	 */
-	function __construct(int $id, string $level, mixed $message)
+	function __construct(int $id, string $level, mixed $message, Trace $trace)
 	{
 		$this->id = $id;
 		$this->level = $level;
 		$this->type = $this->getMessageType($message);
 		$this->message = $message;
+                $this->trace = $trace;
 	}
 
 	/**
@@ -93,6 +99,8 @@ class Log
 			'level' => $this->level,
 			'type' => $this->type,
 			'message' => $this->message,
+                        'line' => $this->trace->line,
+                        'file' => $this->trace->file,
 		];
 	}
 }

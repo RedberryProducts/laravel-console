@@ -109,12 +109,21 @@ class Logger
 	 */
 	protected function writeLog($level, $message)
 	{
-		$trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS & ~DEBUG_BACKTRACE_PROVIDE_OBJECT);
-		$consoleLogTrace = $trace[2];
 
-		$id = CacheManager::increment();
-		CacheManager::add(
-			(new Log($id, $level, $message))->toArray(),
-		);
+            $trace = $this->findTrace();
+            $id = CacheManager::increment();
+            CacheManager::add(
+                    (new Log($id, $level, $message, $trace))->toArray(),
+            );
 	}
+
+        /**
+         * Find log trace.
+         */
+        private function findTrace()
+        {
+            $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS & ~DEBUG_BACKTRACE_PROVIDE_OBJECT);
+            $consoleLogTrace = collect($trace)->where('class', self::class)->last();
+            return new Trace($consoleLogTrace);
+        }
 }
